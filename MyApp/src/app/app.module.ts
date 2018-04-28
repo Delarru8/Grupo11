@@ -15,7 +15,9 @@ import { SiersProvider } from '../providers/siers/siers';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+	AngularFireModule.initializeApp(fireBaseConfig),
+	AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -30,3 +32,12 @@ import { SiersProvider } from '../providers/siers/siers';
   ]
 })
 export class AppModule {}
+
+export const fireBaseConfig={
+apiKey: "AIzaSyBV7td_68dyOgqb8R1hSkzDGhTEfPaB9eQ",
+    authDomain: "siers-1222a.firebaseapp.com",
+    databaseURL: "https://siers-1222a.firebaseio.com",
+    projectId: "siers-1222a",
+    storageBucket: "siers-1222a.appspot.com",
+    messagingSenderId: "333571279325"};
+

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import { AngularFireDatabase} from 'angularfire2/database';
+//import {Cliente} from '../../models/cliente.model';
 /*
   Generated class for the SiersProvider provider.
 
@@ -9,8 +10,7 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class SiersProvider {
-
-  constructor(public http: HttpClient) {
+  constructor(public afDB:AngularFireDatabase) {
     console.log('Hello SiersProvider Provider');
   }
 
