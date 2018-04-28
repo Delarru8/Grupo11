@@ -4,12 +4,21 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
+
 <ion-header>
+    <ion-navbar>
+	    <ion-buttons start width-10>
+		<img src='assets/imgs/logo.png' id="logo">
+        </ion-buttons>
 
-  <ion-navbar>
-    <ion-title>busqueda</ion-title>
-  </ion-navbar>
-
+        <ion-searchbar id="search" placeholder="Busca un libro" (ionInput)="filterItems($event, this.content)"
+            (ionClear)="resetFilter($event)"></ion-searchbar>
+        <ion-buttons end>
+            <button id="conf" ion-button icon-only>
+                <ion-icon name="settings"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
 </ion-header>
 
 

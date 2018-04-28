@@ -17,6 +17,9 @@ import { Slides } from 'ionic-angular';
   templateUrl: 'home.html',
 })
 export class HomePage {
+	constructor(public navCtrl: NavController, public navParams: NavParams) {
+		
+  }
 	
 	@ViewChild(Slides) slides: Slides;
 
@@ -33,8 +36,13 @@ export class HomePage {
   ngAfterViewInit() {
     this.slides.freeMode = true;
   }
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
 
+
+	irHome() {
+	 this.navCtrl.setRoot(page-home);
+	 }
+	 irBusqueda() {
+	 this.navCtrl.setRoot(page-busqueda);
+	 }
 }
 
