@@ -5,7 +5,7 @@ export class Libro {
     public editorial: string;
     public sinopsis: string;
     public isbn: string;
-	public nota: int;
+	public nota: number;
 
 	constructor()
 	{

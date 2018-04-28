@@ -8,6 +8,15 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { SiersProvider } from '../providers/siers/siers';
 
+export const fireBaseConfig={
+  apiKey: "AIzaSyBV7td_68dyOgqb8R1hSkzDGhTEfPaB9eQ",
+    authDomain: "siers-1222a.firebaseapp.com",
+    databaseURL: "https://siers-1222a.firebaseio.com",
+    projectId: "siers-1222a",
+    storageBucket: "siers-1222a.appspot.com",
+    messagingSenderId: "333571279325"};
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -33,11 +42,5 @@ import { SiersProvider } from '../providers/siers/siers';
 })
 export class AppModule {}
 
-export const fireBaseConfig={
-apiKey: "AIzaSyBV7td_68dyOgqb8R1hSkzDGhTEfPaB9eQ",
-    authDomain: "siers-1222a.firebaseapp.com",
-    databaseURL: "https://siers-1222a.firebaseio.com",
-    projectId: "siers-1222a",
-    storageBucket: "siers-1222a.appspot.com",
-    messagingSenderId: "333571279325"};
+
 
