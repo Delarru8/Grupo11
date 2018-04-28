@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ViewChild } from '@angular/core';
+import { Slides } from 'ionic-angular';
+
 
 /**
  * Generated class for the HomePage page.
@@ -14,12 +17,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'home.html',
 })
 export class HomePage {
+	
+	@ViewChild(Slides) slides: Slides;
 
+  goToSlide() {
+    this.slides.slideTo(2, 500);
+  }
+	
+
+  slideChanged() {
+    let currentIndex = this.slides.getActiveIndex();
+    console.log('Current index is', currentIndex);
+  }
+
+  ngAfterViewInit() {
+    this.slides.freeMode = true;
+  }
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
-  }
-
 }
+
