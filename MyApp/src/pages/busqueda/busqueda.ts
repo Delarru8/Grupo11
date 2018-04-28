@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the BusquedaPage page.
@@ -14,7 +15,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'busqueda.html',
 })
 export class BusquedaPage {
-	root="HomePage";
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -23,12 +23,13 @@ export class BusquedaPage {
     console.log('ionViewDidLoad BusquedaPage');
   }
 
-    
   openPage(pagina)
   {
 	  this.navCtrl.push(pagina);
   }
-  IrHome(){
-	  this.navCtrl.setRoot('HomePage');
+  
+  irHome()
+  {
+	  this.navCtrl.setRoot(HomePage);
   }
 }
