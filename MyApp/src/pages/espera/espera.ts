@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the BusquedaPage page.
+ * Generated class for the EsperaPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,25 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-busqueda',
-  templateUrl: 'busqueda.html',
+  selector: 'page-espera',
+  templateUrl: 'espera.html',
 })
-export class BusquedaPage {
-	root="HomePage";
+export class EsperaPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad BusquedaPage');
+    console.log('ionViewDidLoad EsperaPage');
   }
 
-    
-  openPage(pagina)
-  {
-	  this.navCtrl.push(pagina);
-  }
-  IrHome(){
-	  this.navCtrl.setRoot('HomePage');
-  }
 }

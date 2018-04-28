@@ -11,8 +11,8 @@
 		<img src='assets/imgs/logo.png' id="logo">
         </ion-buttons>
 
-        <ion-searchbar id="search" placeholder="Busca un libro" (ionInput)="filterItems($event, this.content)"
-            (ionClear)="resetFilter($event)"></ion-searchbar>
+        <ion-searchbar id="search" placeholder="Busca un libro" (ionInput)="irHome()"
+            (ionClear)="openPage('homePage')"></ion-searchbar>
         <ion-buttons end>
             <button id="conf" ion-button icon-only>
                 <ion-icon name="settings"></ion-icon>

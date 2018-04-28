@@ -8,11 +8,11 @@
 <ion-header>
     <ion-navbar>
 	    <ion-buttons start width-10>
-		<img src='assets/imgs/logo.png' id="logo">
+		<img src='assets/imgs/logo.png' id="logo" (click)="openPage('HomePage')">
         </ion-buttons>
 
-        <ion-searchbar id="search" placeholder="Busca un libro" (ionInput)="irBusqueda()"
-            (ionClear)="irHome()"></ion-searchbar>
+        <ion-searchbar id="search" placeholder="Busca un libro" (ionInput)="openPage('B')"
+            (ionClear)="openPage('HomePage')"></ion-searchbar>
         <ion-buttons end>
             <button id="conf" ion-button icon-only>
                 <ion-icon name="settings"></ion-icon>

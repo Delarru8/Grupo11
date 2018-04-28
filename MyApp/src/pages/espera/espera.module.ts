@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { EnEsperaPage } from './en-espera';
+import { EsperaPage } from './espera';
 
 @NgModule({
   declarations: [
-    EnEsperaPage,
+    EsperaPage,
   ],
   imports: [
-    IonicPageModule.forChild(EnEsperaPage),
+    IonicPageModule.forChild(EsperaPage),
   ],
 })
-export class EnEsperaPageModule {}
+export class EsperaPageModule {}

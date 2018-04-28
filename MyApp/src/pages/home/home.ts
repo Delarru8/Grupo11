@@ -38,11 +38,11 @@ export class HomePage {
   }
 
 
-	irHome() {
-	 this.navCtrl.setRoot(page-home);
-	 }
-	 irBusqueda() {
-	 this.navCtrl.setRoot(page-busqueda);
-	 }
+  
+  openPage(pagina)
+  {
+	  this.navCtrl.push(pagina);
+  }
+
 }
 
