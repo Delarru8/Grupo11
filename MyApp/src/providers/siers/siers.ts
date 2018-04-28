@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase} from 'angularfire2/database';
-import {Libro} from '../../models/libro.model';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { Libro } from '../../models/libro.model';
 /*
   Generated class for the SiersProvider provider.
 
