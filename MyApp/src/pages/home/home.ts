@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
-import { HomePage } from '../home/home';
+
 
 
 /**
@@ -38,13 +38,11 @@ export class HomePage {
     this.slides.freeMode = true;
   }
   
-  openPage(pagina)
-  {
+  openPage(pagina){
 	  this.navCtrl.push(pagina);
   }
   
-  irHome()
-  {
+  irHome(){
 	  this.navCtrl.setRoot(HomePage);
   }
 }
