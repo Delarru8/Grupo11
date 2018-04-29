@@ -1,7 +1,10 @@
+
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
+import {SiersProvider} from '../../providers/siers/siers';
+import {Libro} from '../../models/libro.model';
 
 
 
@@ -18,7 +21,10 @@ import { Slides } from 'ionic-angular';
   templateUrl: 'home.html',
 })
 export class HomePage {
-	constructor(public navCtrl: NavController, public navParams: NavParams) {
+	
+	listaLibros:any;
+	
+	constructor(public navCtrl: NavController, public navParams: NavParams,public dbFirebase:SiersProvider) {
 		
   }
 	
@@ -45,5 +51,26 @@ export class HomePage {
   irHome(){
 	  this.navCtrl.setRoot(HomePage);
   }
+  
+  //AÑADIR LIBROS A FIREBASE
+  
+  addLibro(){
+let datoslibro:Libro=new Libro();
+datoslibro.titulo="Harry Potter";
+datoslibro.autor="J. K. Rowling";
+this.dbFirebase.guardarLibro(datoslibro).then(res=>{
+alert(datoslibro.isbn+ " guardado en FB");
+});
+ }
+  
+ delLibro(isbn) { this.dbFirebase.delLibro(isbn); }
+  
+  ionViewDidEnter()
+ {
+ this.dbFirebase.getLibros().subscribe(listaLibros=>{this.listaLibros=listaLibros;});
+ }
+  
+
+  
 }
 

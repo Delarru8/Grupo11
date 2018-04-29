@@ -6,7 +6,7 @@ export class Libro {
     public sinopsis: string;
     public isbn: string;
 	public nota: number;
-
+	public imagen: string;
 
 	constructor()
 	{

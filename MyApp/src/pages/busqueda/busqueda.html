@@ -11,7 +11,7 @@
 		<img src='assets/imgs/logo.png' id="logo">
         </ion-buttons>
 
-        <ion-searchbar id="search" placeholder="Busca un libro"></ion-searchbar> 
+        <ion-searchbar id="search" placeholder="Busca un libro" (ionInput)="getItems($event)"></ion-searchbar> 
         <ion-buttons end>
             <button id="conf" ion-button icon-only (click)="irHome()">
                 <ion-icon name="home"></ion-icon>
@@ -22,4 +22,82 @@
 
 <ion-content padding>
 
+	<ion-row>
+        <ion-col col-6>
+        <h4>Resultados de:</h4>
+        </ion-col>
+        <ion-col col-6>
+            <div class="datos">
+                <b *ngFor="let item of items; index as i; trackBy: trackByFn">
+                    {{ item }}
+                </b>
+            </div>
+        </ion-col>
+    </ion-row>
+
+		<hr>
+	<ion-row>
+		<ion-col col-5>
+			<div class="libroB">
+				<img src='assets/imgs/libro.jpg' class="libro1">	
+			</div>
+		</ion-col>
+		<ion-col col-7>
+			<div class="datos">
+				Titulo:
+			</div>
+			<div class="datos">
+				Autor:
+			</div>
+			<div class="datos">
+				Sinopsis:
+			</div>
+		</ion-col>
+	</ion-row>
+		<hr>
+	<ion-row>
+		<ion-col col-5>
+			<div class="libroB">
+				<img src='assets/imgs/libro.jpg' class="libro1">	
+			</div>
+		</ion-col>
+		<ion-col col-7>
+			<div class="datos">
+				Titulo:
+			</div>
+			<div class="datos">
+				Autor:
+			</div>
+			<div class="datos">
+				Sinopsis:
+			</div>
+		</ion-col>
+	</ion-row>
+		<hr>
+	<ion-row>
+		<ion-col col-5>
+			<div class="libroB">
+				<img src='assets/imgs/libro.jpg' class="libro1">	
+			</div>
+		</ion-col>
+		<ion-col col-7>
+			<div class="datos">
+				Titulo:
+			</div>
+			<div class="datos">
+				Autor:
+			</div>
+			<div class="datos">
+				Sinopsis:
+			</div>
+		</ion-col>
+	</ion-row>
 </ion-content>
+
+<ion-footer>
+<div class="tab">
+  <button class="tablinks" (click)="openPage('EsperaPage')"><ion-icon name="book"></ion-icon></button>
+  <button class="tablinks" (click)="irHome()"><ion-icon name="home"></ion-icon></button>
+  <button class="tablinks" (click)="openPage('PerfilPage')"><ion-icon name="person"></ion-icon></button>
+</div>
+</ion-footer>
