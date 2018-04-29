@@ -7,6 +7,7 @@ export class Libro {
     public isbn: string;
 	public nota: number;
 
+
 	constructor()
 	{
 		this.isbn="";
