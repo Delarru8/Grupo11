@@ -163,8 +163,8 @@
 	<h1>LISTADO DE LIBROS:</h1>
 
  <p *ngFor="let libro of listaLibros ">
-<button small ion-button (click)="delLibro([libro.isbn])">-</button>
-<button small ion-button (click)="updateLibro([libro.isbn])">u</button>
+<button small ion-button (click)="delLibro([libro.titulo])">-</button>
+<button small ion-button (click)="updateLibro([libro.titulo])">u</button>
 {{libro.titulo}} {{libro.autor}}
  </p>
 

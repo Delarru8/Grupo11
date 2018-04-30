@@ -10,28 +10,23 @@ import { Libro } from '../../models/libro.model';
 */
 @Injectable()
 export class SiersProvider {
-  constructor(public afDB:AngularFireDatabase) {
-    console.log('Hello SiersProvider Provider');
-	 
-
-  }
-
-  guardarLibro(libro:Libro){
-	   if (libro.isbn=='') {libro.isbn=""+Date.now();}
- return this.afDB.database.ref('libros/'+libro.isbn).set(libro);
-
-  }
-  
-   delLibro(isbn){
-	 this.afDB.database.ref('libros/'+isbn).remove();
-  }
-  
-   private librosRef=this.afDB.list<Libro>('libros');
-   
-   
-   getLibros(){
-return this.librosRef.valueChanges();
- } 
-  
-  
+	constructor(public afDB:AngularFireDatabase) {
+		console.log('Hello SiersProvider Provider');
+	}
+	
+	guardarLibro(libro:Libro){
+		if (libro.isbn=='') {libro.isbn=""+Date.now();}
+		return this.afDB.database.ref('libros/'+libro.titulo).set(libro);
+	}
+	
+	delLibro(titulo){
+		this.afDB.database.ref('libros/'+titulo).remove();
+	}
+	
+	private librosRef=this.afDB.list<Libro>('libros');
+	
+	getLibros(){
+		return this.librosRef.valueChanges();
+	} 
+	
 }

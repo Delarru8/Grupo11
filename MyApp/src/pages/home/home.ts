@@ -25,8 +25,23 @@ export class HomePage {
 	listaLibros:any;
 	
 	constructor(public navCtrl: NavController, public navParams: NavParams,public dbFirebase:SiersProvider) {
-		
-  }
+		let datoslibro:Libro=new Libro();
+		datoslibro.titulo="Harry Potter";
+		datoslibro.autor="J. K. Rowling";
+		this.dbFirebase.guardarLibro(datoslibro).then(res=>{alert(datoslibro.titulo+ " guardado en FB");});
+		let datoslibro2:Libro=new Libro();
+		datoslibro2.titulo="Los Juegos Del Hambre";
+		datoslibro2.autor="Persona Famosa";
+		this.dbFirebase.guardarLibro(datoslibro2).then(res=>{alert(datoslibro2.titulo+ " guardado en FB");});
+		let datoslibro3:Libro=new Libro();
+		datoslibro3.titulo="Diario de Greg";
+		datoslibro3.autor="Yo";
+		this.dbFirebase.guardarLibro(datoslibro3).then(res=>{alert(datoslibro3.titulo+ " guardado en FB");});
+		let datoslibro4:Libro=new Libro();
+		datoslibro4.titulo="Me llamo Ralph";
+		datoslibro4.autor="Matt Groening";
+		this.dbFirebase.guardarLibro(datoslibro4).then(res=>{alert(datoslibro4.titulo+ " guardado en FB");});
+	}
 	
 	@ViewChild(Slides) slides: Slides;
 
@@ -55,15 +70,13 @@ export class HomePage {
   //AÑADIR LIBROS A FIREBASE
   
   addLibro(){
-let datoslibro:Libro=new Libro();
-datoslibro.titulo="Harry Potter";
-datoslibro.autor="J. K. Rowling";
-this.dbFirebase.guardarLibro(datoslibro).then(res=>{
-alert(datoslibro.isbn+ " guardado en FB");
-});
+	let datoslibro:Libro=new Libro();
+	datoslibro.titulo="Harry Potter";
+	datoslibro.autor="J. K. Rowling";
+	this.dbFirebase.guardarLibro(datoslibro).then(res=>{alert(datoslibro.titulo+ " guardado en FB");});
  }
   
- delLibro(isbn) { this.dbFirebase.delLibro(isbn); }
+ delLibro(titulo) { this.dbFirebase.delLibro(titulo); }
   
   ionViewDidEnter()
  {

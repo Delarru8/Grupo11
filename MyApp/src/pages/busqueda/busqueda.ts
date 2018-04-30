@@ -50,7 +50,7 @@ export class BusquedaPage {
 
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
-      this.items = this._items.filter((item) => {
+      this.items = this.dbFirebase.getLibros().filter((item) => {
         return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
