@@ -20,7 +20,8 @@ import {Libro} from '../../models/libro.model';
 export class BusquedaPage {
 	
 	public _items:String[]=['aaa','bolsa de plastico','bidrio mal escrito','balla kk de trabajo','ccxc'];
-	public items:String[];
+	public libros:Libro[];
+	buscado : string;
 	
   constructor(public navCtrl: NavController, public navParams: NavParams,public dbFirebase:SiersProvider) {
   }
@@ -40,10 +41,27 @@ export class BusquedaPage {
   }
   
   //prueba
+	
+	vaciar() {
+		this.buscado = "";
+	}
 
-
-  
-/*
+	listaLibros:any;
+	
+	ionViewDidEnter()
+	{
+		this.dbFirebase.getLibros().subscribe(listaLibros=>{this.listaLibros=listaLibros;});
+	}
+	
+	buscar() {
+		if (this.buscado && this.buscado != '') {
+			this.libros = this.listaLibros.filter((libro) => {
+				return (libro.titulo.toLowerCase().indexOf(this.buscado.toLowerCase()) > -1);
+			});
+		}
+	}
+	
+	/*
   getItems(ev) {
     // set val to the value of the ev target
     var val = ev.target.value;
@@ -56,8 +74,7 @@ export class BusquedaPage {
     }
   }
   */
-
-
-//fin prueba
+	
+  //fin prueba
   
 }

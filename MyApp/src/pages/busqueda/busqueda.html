@@ -11,7 +11,7 @@
 		<img src='assets/imgs/logo.png' id="logo">
         </ion-buttons>
 
-        <ion-searchbar id="search" placeholder="Busca un libro" (ionInput)="getItems($event)"></ion-searchbar> 
+        <ion-searchbar id="search" [(ngModel)]="buscado" placeholder="Busca un libro" (ionClear)="vaciar()" (keyUp)="buscar()"></ion-searchbar> 
         <ion-buttons end>
             <button id="conf" ion-button icon-only (click)="irHome()">
                 <ion-icon name="home"></ion-icon>
@@ -28,7 +28,7 @@
         </ion-col>
         <ion-col col-6>
             <div class="datos">
-                <div *ngFor="let libro of listaLibros ">
+                <div *ngFor="let libro of libros ">
                     {{libro.titulo}}
                 </div>
             </div>
