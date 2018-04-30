@@ -19,7 +19,7 @@ import {Libro} from '../../models/libro.model';
 })
 export class BusquedaPage {
 	
-	public _items:String[]=['aaa','bbbx','bag','ccxc'];
+	public _items:String[]=['aaa','bolsa de plastico','bidrio mal escrito','balla kk de trabajo','ccxc'];
 	public items:String[];
 	
   constructor(public navCtrl: NavController, public navParams: NavParams,public dbFirebase:SiersProvider) {
