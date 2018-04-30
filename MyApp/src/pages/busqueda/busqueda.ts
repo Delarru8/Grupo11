@@ -1,7 +1,8 @@
+import { HomePage } from '../home/home';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HomePage } from '../home/home';
-
+import { ViewChild } from '@angular/core';
+import { Slides } from 'ionic-angular';
 import {SiersProvider} from '../../providers/siers/siers';
 import {Libro} from '../../models/libro.model';
 
@@ -19,13 +20,8 @@ import {Libro} from '../../models/libro.model';
 })
 export class BusquedaPage {
 	
-	public _items:String[]=['aaa','bolsa de plastico','bidrio mal escrito','balla kk de trabajo','ccxc'];
-	public items:String[];
-	public libros:Libro[];
-	listaLibros:any;
+	public libros:String[];
 	buscado : string;
-	i:any;
-	
 	
   constructor(public navCtrl: NavController, public navParams: NavParams,public dbFirebase:SiersProvider) {
   }
@@ -44,43 +40,28 @@ export class BusquedaPage {
 	  this.navCtrl.setRoot(HomePage);
   }
   
-  //prueba
-	
 	vaciar() {
 		this.buscado = "";
 	}
 
+	public listaLibros: Libro[];
 	
 	ionViewDidEnter()
 	{
 		this.dbFirebase.getLibros().subscribe(listaLibros=>{this.listaLibros=listaLibros;});
-		for (this.i in this.listaLibros) {
-			this.items.push(this.i.titulo);
-		}
 	}
 	
 	buscar() {
+		var _libros: String[] = new Array(this.listaLibros.length);
+		var libro: Libro;
+		for(libro in this.listaLibros){
+			_libros[libro] = this.listaLibros[libro].titulo;
+		}
 		if (this.buscado != '') {
-			this.libros = this.listaLibros.filter((libro) => {
-				return (libro.titulo.toLowerCase().indexOf(this.buscado.toLowerCase()) > -1);
+			this.libros = _libros.filter((libro) => {
+				return (libro.toLowerCase().indexOf(this.buscado.toLowerCase()) > -1);
 			});
 		}
 	}
-	
-	/*
-  getItems(ev) {
-    // set val to the value of the ev target
-    var val = ev.target.value;
-
-    // if the value is an empty string don't filter the items
-    if (val && val.trim() != '') {
-      this.items = this.dbFirebase.getLibros().filter((item) => {
-        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
-    }
-  }
-  */
-	
-  //fin prueba
   
 }
