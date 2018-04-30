@@ -21,6 +21,7 @@ import {Libro} from '../../models/libro.model';
 export class BusquedaPage {
 	
 	public libros:String[];
+	public vacio:String[];
 	buscado : string;
 	
   constructor(public navCtrl: NavController, public navParams: NavParams,public dbFirebase:SiersProvider) {
@@ -40,11 +41,16 @@ export class BusquedaPage {
 	  this.navCtrl.setRoot(HomePage);
   }
   
+	
+	public listaLibros: Libro[];
+	public librosParecidos: Libro[];
+	public vacio2: Libro[];
+  
 	vaciar() {
 		this.buscado = "";
+		this.libros = this.vacio;
+		this.librosParecidos = this.vacio2;
 	}
-
-	public listaLibros: Libro[];
 	
 	ionViewDidEnter()
 	{
@@ -53,14 +59,29 @@ export class BusquedaPage {
 	
 	buscar() {
 		var _libros: String[] = new Array(this.listaLibros.length);
-		var libro: Libro;
-		for(libro in this.listaLibros){
+		for(var libro in this.listaLibros){
 			_libros[libro] = this.listaLibros[libro].titulo;
 		}
 		if (this.buscado != '') {
 			this.libros = _libros.filter((libro) => {
 				return (libro.toLowerCase().indexOf(this.buscado.toLowerCase()) > -1);
 			});
+			var par: number[] = new Array(this.libros.length);
+			for(var j in this.libros){
+				for(var k in _libros){
+					if(this.libros[j] == _libros[k]){
+						par[j] = k;
+					}
+				}
+			}
+			this.librosParecidos = new Array(this.libros.length);
+			for(var i in this.libros){
+				this.librosParecidos[i] = this.listaLibros[par[i]];
+			}
+		}
+		else{
+			this.libros = this.vacio;
+			this.librosParecidos = this.vacio2;
 		}
 	}
   
