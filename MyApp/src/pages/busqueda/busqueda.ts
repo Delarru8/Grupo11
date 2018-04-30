@@ -20,8 +20,12 @@ import {Libro} from '../../models/libro.model';
 export class BusquedaPage {
 	
 	public _items:String[]=['aaa','bolsa de plastico','bidrio mal escrito','balla kk de trabajo','ccxc'];
+	public items:String[];
 	public libros:Libro[];
+	listaLibros:any;
 	buscado : string;
+	i:any;
+	
 	
   constructor(public navCtrl: NavController, public navParams: NavParams,public dbFirebase:SiersProvider) {
   }
@@ -46,15 +50,17 @@ export class BusquedaPage {
 		this.buscado = "";
 	}
 
-	listaLibros:any;
 	
 	ionViewDidEnter()
 	{
 		this.dbFirebase.getLibros().subscribe(listaLibros=>{this.listaLibros=listaLibros;});
+		for (this.i in this.listaLibros) {
+			this.items.push(this.i.titulo);
+		}
 	}
 	
 	buscar() {
-		if (this.buscado && this.buscado != '') {
+		if (this.buscado != '') {
 			this.libros = this.listaLibros.filter((libro) => {
 				return (libro.titulo.toLowerCase().indexOf(this.buscado.toLowerCase()) > -1);
 			});
