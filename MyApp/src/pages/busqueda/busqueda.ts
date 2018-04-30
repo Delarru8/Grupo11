@@ -43,7 +43,7 @@ export class BusquedaPage {
 
 
   
-
+/*
   getItems(ev) {
     // set val to the value of the ev target
     var val = ev.target.value;
@@ -55,7 +55,7 @@ export class BusquedaPage {
       })
     }
   }
-  
+  */
 
 
 //fin prueba
