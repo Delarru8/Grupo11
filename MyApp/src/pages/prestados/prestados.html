@@ -7,7 +7,19 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>prestados</ion-title>
+    <ion-navbar>
+	    <ion-buttons start width-10>
+		<img src='assets/imgs/logo.png' id="logo">
+        </ion-buttons>
+
+        <ion-searchbar id="search" placeholder="Busca un libro" (click)="openPage('BusquedaPage')"
+            (ionClear)="irHome()"></ion-searchbar>
+        <ion-buttons end>
+            <button id="conf" ion-button icon-only>
+                <ion-icon name="settings"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
   </ion-navbar>
 
 </ion-header>
@@ -16,3 +28,11 @@
 <ion-content padding>
 
 </ion-content>
+
+<ion-footer>
+<div class="tab">
+  <button class="tablinks" (click)="openPage('EsperaPage')"><ion-icon name="book"></ion-icon></button>
+  <button class="tablinks" (click)="irHome()"><ion-icon name="home"></ion-icon></button>
+  <button class="tablinks" (click)="openPage('PerfilPage')"><ion-icon name="person"></ion-icon></button>
+</div>
+</ion-footer>

@@ -11,7 +11,7 @@
 		<img src='assets/imgs/logo.png' id="logo">
         </ion-buttons>
 
-        <ion-searchbar id="search" placeholder="Busca un libro" (ionInput)="openPage('BusquedaPage')"
+        <ion-searchbar id="search" placeholder="Busca un libro" (click)="openPage('BusquedaPage')"
             (ionClear)="irHome()"></ion-searchbar>
         <ion-buttons end>
             <button id="conf" ion-button icon-only>

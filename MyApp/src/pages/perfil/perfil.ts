@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { HomePage } from '../home/home';
 /**
  * Generated class for the PerfilPage page.
  *
@@ -22,4 +22,12 @@ export class PerfilPage {
     console.log('ionViewDidLoad PerfilPage');
   }
 
+  openPage(pagina){
+	  this.navCtrl.push(pagina);
+  }
+  
+  irHome(){
+	  this.navCtrl.setRoot(HomePage);
+  }
+  
 }

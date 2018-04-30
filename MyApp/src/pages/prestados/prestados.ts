@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { HomePage } from '../home/home';
 /**
  * Generated class for the PrestadosPage page.
  *
@@ -22,4 +22,12 @@ export class PrestadosPage {
     console.log('ionViewDidLoad PrestadosPage');
   }
 
+  openPage(pagina){
+	  this.navCtrl.push(pagina);
+  }
+  
+  irHome(){
+	  this.navCtrl.setRoot(HomePage);
+  }
+  
 }
