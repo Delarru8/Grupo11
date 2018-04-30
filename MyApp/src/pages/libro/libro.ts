@@ -16,6 +16,7 @@ import { HomePage } from '../home/home';
 export class LibroPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+	   alert(this.navParams.get('userParams'));
   }
 
   ionViewDidLoad() {
