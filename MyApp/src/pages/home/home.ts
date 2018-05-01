@@ -29,6 +29,7 @@ export class HomePage {
 	public lib3: Libro[];
 	public param: any;
 	public unLibro: any;
+	public newuser: any;
 		
 	constructor(public navCtrl: NavController, public navParams: NavParams,public dbFirebase:SiersProvider,public modal: ModalController) {
 		this.dbFirebase.getLibros().subscribe(listaLibros=>{this.listaLibros=listaLibros;
@@ -51,7 +52,11 @@ export class HomePage {
 	@ViewChild(Slides) slides: Slides;
 
 	openModal(){
-	var modalPage = this.modal.create('ModalPage'); modalPage.present(); 
+	var modalPage = this.modal.create('ModalPage'); modalPage.onDidDismiss((newuser) => {
+      this.newuser=newuser;
+     alert(this.newuser.nombre);
+    });
+	modalPage.present(); 
    }    
 	
   goToSlide() {

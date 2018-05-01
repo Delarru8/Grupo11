@@ -17,8 +17,13 @@ import {Usuario} from '../../models/usuario.model';
   templateUrl: 'modal.html',
 })
 export class ModalPage {
-public listaLibros:any[];
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl : ViewController) {
+public listaUsuarios:any[];
+	user : string;
+	pass : string;
+	public newuser:any;
+
+
+public constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl : ViewController,public dbFirebase:SiersProvider) {
   }
 
 	ionViewDidEnter()
@@ -27,14 +32,19 @@ public listaLibros:any[];
 	}
 
   closeModal(){
-            this.librosParecidos = new Array(this.libros.length);
-            for(var i in this.libros){
-                this.librosParecidos[i] = this.listaLibros[this.par[i]];
+	  this.newuser="";
+            for(var i in this.listaUsuarios){
+				if(this.listaUsuarios[i].nombre==this.user && this.listaUsuarios[i].contraseña==this.pass){
+                this.newuser=this.listaUsuarios[i];
             }
+				
         }
 	  
-	  
-	   this.viewCtrl.dismiss();
+	  if(this.newuser!=""){
+	   this.viewCtrl.dismiss(this.newuser);
+	  }else{
+		 alert("Usuario incorecto");
+	  }
   }
   
 }
