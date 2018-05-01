@@ -23,7 +23,7 @@ export class BusquedaPage {
 	public libros:String[];
 	public vacio:String[];
 	public par:any[];
-	buscado : string;
+	public buscado : string;
 	public newuser: any;
 	public param: any;
 	public unUser: any;
