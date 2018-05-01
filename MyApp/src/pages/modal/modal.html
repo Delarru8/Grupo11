@@ -1,0 +1,57 @@
+<!--
+  Generated template for the ModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Inicio de sesión</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+	<ion-row >
+        <ion-col col-2>
+        
+        </ion-col>
+		<ion-col col-8>
+        <img src='assets/imgs/logo.png' id="logo" >
+        </ion-col>
+		<ion-col col-2>
+        
+        </ion-col>
+    </ion-row>
+	
+	<ion-row >
+			<span class="Nombre">Nombre:</span>
+    </ion-row>
+	<ion-row >
+		
+			<ion-input placeholder="Nombre de usuario" [(ngModel)]="user" ></ion-input>
+
+    </ion-row>
+	
+	
+	
+	<ion-row >
+			<span class="Nombre">Contraseña:</span>
+    </ion-row>
+	<ion-row >
+		
+			<ion-input placeholder="Contraseña" [(ngModel)]="pass" ></ion-input>
+
+    </ion-row>
+
+	<ion-row>
+	
+		<ion-col >
+			<button ion-button round color="light" class="boton" (click)="closeModal()" >Iniciar sesion</button>
+		</ion-col>
+	 </ion-row>	
+	
+</ion-content>
