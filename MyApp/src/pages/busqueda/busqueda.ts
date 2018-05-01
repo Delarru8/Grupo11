@@ -22,10 +22,13 @@ export class BusquedaPage {
 	public vacio:String[];
 	public par:any[];
 	buscado : string;
+	public newuser: any;
 	public param: any;
 	public unLibro: any;
 	
   constructor(public navCtrl: NavController, public navParams: NavParams,public dbFirebase:SiersProvider) {
+	  this.newuser = navParams.get("unUser");
+	  alert(this.newuser.nombre);
   }
 
   ionViewDidLoad() {
@@ -34,20 +37,27 @@ export class BusquedaPage {
 
   openPage(pagina)
   {
-	  this.navCtrl.push(pagina);
+	  this.param = {
+		unUser: this.newuser
+	};
+	this.navCtrl.push(pagina,this.param);
   }
   
   
   goToLibro(libroDado) {
 	this.param = {
-		unLibro: libroDado
+		unLibro: libroDado,
+		unUser: this.newuser
 	};
 	this.navCtrl.push('LibroPage',this.param);
   }
   
   irHome()
   {
-	  this.navCtrl.setRoot(HomePage);
+	  this.param = {
+		unUser: this.newuser
+		};
+	  this.navCtrl.setRoot(HomePage,this.param);
   }
   
 	

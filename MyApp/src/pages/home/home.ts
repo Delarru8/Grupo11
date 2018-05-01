@@ -46,7 +46,11 @@ export class HomePage {
 				this.lib3[k-6]=listaLibros[k];
 			}
 		}
-	});
+		});
+		if(navParams.get("unUser")){
+			this.newuser = navParams.get("unUser");
+			alert(this.newuser.nombre);
+		}
 	}
 	
 	@ViewChild(Slides) slides: Slides;
@@ -54,7 +58,6 @@ export class HomePage {
 	openModal(){
 	var modalPage = this.modal.create('ModalPage'); modalPage.onDidDismiss((newuser) => {
       this.newuser=newuser;
-     alert(this.newuser.nombre);
     });
 	modalPage.present(); 
    }    
@@ -74,18 +77,26 @@ export class HomePage {
   }
   
   openPage(pagina){
-	  this.navCtrl.push(pagina);
+	  this.param = {
+		unUser: this.newuser
+	};
+	this.navCtrl.push(pagina,this.param);
   }
   
   goToLibro(libroDado) {
 	this.param = {
-		unLibro: libroDado
+		unLibro: libroDado,
+		unUser: this.newuser
 	};
 	this.navCtrl.push('LibroPage',this.param);
   }
   
-  irHome(){
-	  this.navCtrl.setRoot(HomePage);
+  irHome()
+  {
+	  this.param = {
+		unUser: this.newuser
+		};
+	  this.navCtrl.setRoot(HomePage,this.param);
   }
   
   //AÑADIR LIBROS A FIREBASE

@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import {SiersProvider} from '../../providers/siers/siers';
 import {Libro} from '../../models/libro.model';
+import {Usuario} from '../../models/usuario.model';
+import {Pedido} from '../../models/pedido.model';
 import { AlertController } from 'ionic-angular';
 /**
  * Generated class for the LibroPage page.
@@ -18,11 +20,15 @@ import { AlertController } from 'ionic-angular';
 })
 export class LibroPage {
 	public lib:any;
+	public newuser:any;
 	public dis:boolean = false;
 	public bibliovalue: String;
+	public fecha: Date;
 	
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public dbFirebase:SiersProvider) {
 	  this.lib = navParams.get("unLibro");
+	  this.newuser = navParams.get("unUser");
+	  alert(this.newuser.nombre);
   }
 
   ionViewDidLoad() {
@@ -31,12 +37,18 @@ export class LibroPage {
 
   openPage(pagina)
   {
-	  this.navCtrl.push(pagina);
+	this.param = {
+		unUser: this.newuser
+	};
+	this.navCtrl.push(pagina,this.param);
   }
   
   irHome()
   {
-	  this.navCtrl.setRoot(HomePage);
+	  this.param = {
+		unUser: this.newuser
+		};
+	  this.navCtrl.setRoot(HomePage,this.param);
   }
   
   disponible(){
@@ -49,13 +61,11 @@ export class LibroPage {
   }
   
   showAlert() {
-	    /*
-	  var biblio = document.getElementById("bibliovalue");
-	  var biblioteca = bibliovalue.options[bibliovalue.selectedIndex].value;
-	  
-	  if(biblioteca == "leg" || biblioteca == "gl" || biblioteca == "alc"){
-			this.navCtrl.setRoot(HomePage);
-	  
+	  if(this.dis = false){
+			this.param = {
+				unUser: this.newuser
+			};
+			this.navCtrl.setRoot(HomePage,this.param);
 			let alert = this.alertCtrl.create({
 			title: 'En espera',
 			subTitle: 'Te has puesto en la lista de espera. Se te avisará cuando este disponible',
@@ -65,13 +75,22 @@ export class LibroPage {
 		}
 		
 	  else{
-		var alertfecha = document.getElementById("fecha").value;
-		if(alertfecha != ""){
-			this.navCtrl.setRoot(HomePage);
+		if(this.fecha != ""){
 			
+			let datoslibro5:Pedido=new Pedido();
+			datoslibro5.titulo=this.lib.titulo;
+			datoslibro5.nombre=this.newuser.nombre;
+			datoslibro5.fecha=this.fecha;
+			datoslibro5.imagen=this.lib.imagen;
+			this.dbFirebase.guardarPedido(datoslibro5);
+	
+			this.param = {
+				unUser: this.newuser
+			};
+			this.navCtrl.setRoot(HomePage,this.param);
 			let alert = this.alertCtrl.create({
 			title: 'Reservado',
-			subTitle: 'Puede recoger el libro en la fecha indicada: '+alertfecha,
+			subTitle: 'Puede recoger el libro en la fecha indicada: '+this.fecha,
 			buttons: ['OK']
 			});
 			alert.present();
@@ -79,7 +98,7 @@ export class LibroPage {
 		}
 			
 		else{
-		  let alert = this.alertCtrl.create({
+			let alert = this.alertCtrl.create({
 			title: 'Especifica una fecha',
 			subTitle: 'No se ha introducido una fecha valida',
 			buttons: ['OK']
@@ -87,7 +106,6 @@ export class LibroPage {
 			alert.present();
 		}
 	  }
-	   */
   }
 
 }
