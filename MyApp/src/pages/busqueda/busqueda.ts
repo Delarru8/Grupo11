@@ -1,8 +1,6 @@
 import { HomePage } from '../home/home';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ViewChild } from '@angular/core';
-import { Slides } from 'ionic-angular';
 import {SiersProvider} from '../../providers/siers/siers';
 import {Libro} from '../../models/libro.model';
 
@@ -24,6 +22,8 @@ export class BusquedaPage {
 	public vacio:String[];
 	public par:any[];
 	buscado : string;
+	public param: any;
+	public unLibro: any;
 	
   constructor(public navCtrl: NavController, public navParams: NavParams,public dbFirebase:SiersProvider) {
   }
@@ -35,6 +35,14 @@ export class BusquedaPage {
   openPage(pagina)
   {
 	  this.navCtrl.push(pagina);
+  }
+  
+  
+  goToLibro(libroDado) {
+	this.param = {
+		unLibro: libroDado
+	};
+	this.navCtrl.push('LibroPage',this.param);
   }
   
   irHome()

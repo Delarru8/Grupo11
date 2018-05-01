@@ -4,10 +4,10 @@
 		<img src='assets/imgs/logo.png' id="logo">
         </ion-buttons>
 
-        <ion-searchbar id="search" placeholder="Busca un libro" (ionInput)="getItems($event)"></ion-searchbar> 
+        <ion-searchbar id="search" placeholder="Busca un libro" (click)="openPage('BusquedaPage')"></ion-searchbar> 
         <ion-buttons end>
-            <button id="conf" ion-button icon-only (click)="irHome()">
-                <ion-icon name="home"></ion-icon>
+            <button id="conf" ion-button icon-only>
+                <ion-icon name="settings"></ion-icon>
             </button>
         </ion-buttons>
     </ion-navbar>
@@ -16,8 +16,8 @@
 <ion-content padding>
 
 	<ion-row>
-        <ion-col col-6>
-        <h4>Harry Potter y el legado maldito </h4>
+        <ion-col col-12>
+        <h4>{{lib.titulo}}</h4>
         </ion-col>
     </ion-row>
 
@@ -25,7 +25,7 @@
 	<ion-row>
 		<ion-col col-5>
 			<div class="libroB">
-				<img src='assets/imgs/libro.jpg' (click)="openPage('LibroPage')" class="libro1">	
+				<img [src]=lib.imagen >	
 			</div>
 		</ion-col>
 		<ion-col col-7>
@@ -33,20 +33,19 @@
 				Titulo:
 			</div>
 			<div class="datos">
-				Harry Potter y el legado maldito
+				{{lib.titulo}}
 			</div>
 			<div class="titulo">
 				Autor:
 			</div>
 			<div class="datos">
-				Jack Thorne, J. K. Rowling & John Tiffany
+				{{lib.autor}}
 			</div>
 			<div class="titulo">
 				Sinopsis:
 			</div>
 			<div class="datos">
-				Ser Harry Potter nunca ha sido tarea facil, menos aun desde que se ha convertido en un atareadisimo empleado del Ministerio de Magia, un hombre casado y padre de tres hijos.
-				<a href="https://es.wikipedia.org/wiki/Harry_Potter_y_el_legado_maldito">...</a>
+				{{lib.sinopsis}}
 			</div>
 		</ion-col>
 	</ion-row>
@@ -62,7 +61,7 @@
 					Disponible
 				</div>
 			</div>
-			 <div *ngIf="!disponible()">
+			<div *ngIf="!disponible()">
 				<div class="nodisp">
 					No Disponible
 				</div>
@@ -72,7 +71,7 @@
 	
 	<ion-row>
 		<ion-col col-60 >
-		<select id="bibliovalue">
+		<select [(ngModel)]="bibliovalue">
 			<option value="leg" (click)="disponible()">Biblioteca Municipal de Leganes</option>
 			<option value="gl" (click)="disponible()">Biblioteca Garcia Lorca</option>
 			<option value="get" (click)="disponible()">Biblioteca Municipal de Getafe</option>

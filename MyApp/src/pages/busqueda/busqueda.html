@@ -13,8 +13,8 @@
 
         <ion-searchbar id="search" [(ngModel)]="buscado" placeholder="Busca un libro" (ionClear)="vaciar()" (ionInput)="buscar()"></ion-searchbar> 
         <ion-buttons end>
-            <button id="conf" ion-button icon-only (click)="irHome()">
-                <ion-icon name="home"></ion-icon>
+            <button id="conf" ion-button icon-only>
+                <ion-icon name="settings"></ion-icon>
             </button>
         </ion-buttons>
     </ion-navbar>
@@ -39,7 +39,7 @@
 	<ion-row *ngFor="let libro of librosParecidos">
 		<ion-col col-5>
 			<div class="libroB">
-				<img [src]=libro.imagen class="libro1">	
+				<img [src]=libro.imagen (click)="goToLibro(libro)">	
 			</div>
 		</ion-col>
 		<ion-col col-7>
@@ -50,7 +50,7 @@
 				<b>Autor:</b> {{libro.autor}}
 			</div>
 			<div class="datos">
-				<b>Sinopsis:</b>
+				<b>Sinopsis:</b> {{libro.sinopsis}}
 			</div>
 		</ion-col>
 		<hr>
