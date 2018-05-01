@@ -5,6 +5,7 @@ import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 import {SiersProvider} from '../../providers/siers/siers';
 import {Libro} from '../../models/libro.model';
+import { AlertController } from 'ionic-angular';
 
 
 
@@ -31,7 +32,7 @@ export class HomePage {
 	public unUser: any;
 	public newuser: any;
 		
-	constructor(public navCtrl: NavController, public navParams: NavParams,public dbFirebase:SiersProvider) {
+	constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams,public dbFirebase:SiersProvider) {
 		this.dbFirebase.getLibros().subscribe(listaLibros=>{this.listaLibros=listaLibros;
 		this.lib1 = new Array(3);
 		this.lib2 = new Array(3);
@@ -47,10 +48,7 @@ export class HomePage {
 			}
 		}
 		});
-		if(navParams.get("unUser")){
-			this.newuser = navParams.get("unUser");
-			alert(this.newuser.nombre);
-		}
+		this.newuser = navParams.get("unUser");
 	}
 	
 	@ViewChild(Slides) slides: Slides;
@@ -71,10 +69,26 @@ export class HomePage {
   }
   
   openPage(pagina){
-	this.param = {
-		unUser: this.newuser
-	};
-	this.navCtrl.push(pagina,this.param);
+	if(pagina!="PedidosPage"){
+		this.param = {
+			unUser: this.newuser
+		};
+		this.navCtrl.push(pagina,this.param);
+	}else{
+		if(this.newuser.tipo=="bl"){
+			this.param = {
+				unUser: this.newuser
+			};
+			this.navCtrl.push(pagina,this.param);
+		}else{
+			let alert = this.alertCtrl.create({
+			title: 'Zona Restringida',
+			subTitle: 'Lo sentimos, pero esta funcionalidad de la aplicación sólo se encuentra disponible para los bibliotecarios.',
+			buttons: ['OK']
+			});
+			alert.present();
+		}
+	}
   }
   
   goToLibro(libroDado) {

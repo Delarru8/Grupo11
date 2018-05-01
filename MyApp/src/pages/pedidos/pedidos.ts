@@ -20,22 +20,25 @@ import { AlertController } from 'ionic-angular';
   templateUrl: 'pedidos.html',
 })
 export class PedidosPage {
-	public listaLibros:any[];
+	public listaPedidos:any[];
 	public newuser:any;
 	public unLibro: any;
 	public unUser: any;
 	public param: any;
 	
   constructor(public navCtrl: NavController, public navParams: NavParams,public dbFirebase:SiersProvider) {
-	  this.dbFirebase.getLibros().subscribe(listaLibros=>{this.listaLibros=listaLibros});
+	  this.dbFirebase.getPedidos().subscribe(listaPedidos=>{this.listaPedidos=listaPedidos});
 	  this.newuser = navParams.get("unUser");
-	  alert(this.newuser.nombre);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PedidosPage');
   }
 
+  prep(){
+	  return true;
+  }
+  
   openPage(pagina)
   {
 	this.param = {

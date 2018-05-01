@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {SiersProvider} from '../../providers/siers/siers';
 import {Libro} from '../../models/libro.model';
+import { AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the BusquedaPage page.
@@ -27,21 +28,35 @@ export class BusquedaPage {
 	public unUser: any;
 	public unLibro: any;
 	
-  constructor(public navCtrl: NavController, public navParams: NavParams,public dbFirebase:SiersProvider) {
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams,public dbFirebase:SiersProvider) {
 	  this.newuser = navParams.get("unUser");
-	  alert(this.newuser.nombre);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BusquedaPage');
   }
 
-  openPage(pagina)
-  {
-	  this.param = {
-		unUser: this.newuser
-	};
-	this.navCtrl.push(pagina,this.param);
+  openPage(pagina){
+	if(pagina!="PedidosPage"){
+		this.param = {
+			unUser: this.newuser
+		};
+		this.navCtrl.push(pagina,this.param);
+	}else{
+		if(this.newuser.tipo=="bl"){
+			this.param = {
+				unUser: this.newuser
+			};
+			this.navCtrl.push(pagina,this.param);
+		}else{
+			let alert = this.alertCtrl.create({
+			title: 'Zona Restringida',
+			subTitle: 'Lo sentimos, pero esta funcionalidad de la aplicación sólo se encuentra disponible para los bibliotecarios.',
+			buttons: ['OK']
+			});
+			alert.present();
+		}
+	}
   }
   
   
