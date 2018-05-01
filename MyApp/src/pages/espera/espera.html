@@ -23,8 +23,8 @@
 <ion-content padding>
 <h3>Pedidos</h3>
 <hr>
-	<div *ngFor="let libro of libros ">
-	<ion-row>
+	<div *ngFor="let libro of listaPedidos ">
+	<ion-row *ngIf="libro.nombre == newuser.nombre">
 		<ion-col col-2>
 			<div>
 				<img [src]=libro.imagen>
@@ -40,12 +40,12 @@
 		</ion-col>
 		<ion-col col-4>
 			<div>
-				<b *ngIf="prep(libro)"> ¡Preparado! </b>
-				<b *ngIf="!prep(libro)"> No Preparado </b>
+				<b *ngIf="libro.preparado == 'si'"> ¡Preparado! </b>
+				<b *ngIf="libro.preparado == 'no'"> No Preparado </b>
 			</div>
 		</ion-col>
+		<hr>
 	</ion-row>
-	<hr>
 	</div>
 </ion-content>
 
