@@ -4,7 +4,6 @@ export class Usuario {
 	public dni: string;
     public contraseña: string;
 	public tipo: string;
-	public dni: string;
 
 	constructor()
 	{
