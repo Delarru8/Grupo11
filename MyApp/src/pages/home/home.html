@@ -11,8 +11,7 @@
 		<img src='assets/imgs/logo.png' id="logo">
         </ion-buttons>
 
-        <ion-searchbar id="search" placeholder="Busca un libro" (click)="openPage('BusquedaPage')"
-            (ionClear)="irHome()"></ion-searchbar>
+        <ion-searchbar id="search" placeholder="Busca un libro" (click)="openPage('BusquedaPage')"></ion-searchbar>
         <ion-buttons end>
             <button id="conf" ion-button icon-only>
                 <ion-icon name="settings"></ion-icon>
@@ -25,159 +24,82 @@
 
 
 <ion-content padding>
-	
-		
-			<h1>Libros recientes</h1>
-			
-			
-		<ion-row>
-			<ion-slides>
-				<ion-slide>
-					<ion-row >
-					<ion-col width-33>
-						<div class="libros recientes">
-							<img src='assets/imgs/libro.jpg' id="libro">	
-						</div>
-					</ion-col>
-					<ion-col width-33>
-						<div class="libros recientes">
-							<img src='assets/imgs/libro.jpg' id="libro">	
-						</div>
-					</ion-col>
-					<ion-col width-33>
-						<div class="libros recientes">
-							<img src='assets/imgs/libro.jpg' id="libro">	
-						</div>
-					</ion-col>
-					</ion-row>
-				</ion-slide>
-				<ion-slide>			
-					<ion-row>
-					<ion-col width-33>
-						<div class="libros recientes">
-							<img src='assets/imgs/libro.jpg' id="libro">	
-						</div>
-					</ion-col>
-					<ion-col width-33>
-						<div class="libros recientes">
-							<img src='assets/imgs/libro.jpg' id="libro">	
-						</div>
-					</ion-col>
-					<ion-col width-33>
-						<div class="libros recientes">
-							<img src='assets/imgs/libro.jpg' id="libro">	
-						</div>
-					</ion-col>
-					</ion-row>
-				</ion-slide>
-				<ion-slide>
-					<ion-row>
-					<ion-col width-33>
-						<div class="libros recientes">
-							<img src='assets/imgs/libro.jpg' id="libro">	
-						</div>
-					</ion-col>
-					<ion-col width-33>
-						<div class="libros recientes">
-							<img src='assets/imgs/libro.jpg' id="libro">	
-						</div>
-					</ion-col>
-					<ion-col width-33>
-						<div class="libros recientes">
-							<img src='assets/imgs/libro.jpg' id="libro">	
-						</div>
-					</ion-col>
-					</ion-row>
-				</ion-slide>
-			</ion-slides>
-			</ion-row>
-	
-			
-				<h1>Recomendados</h1>
-			<ion-row>
-			<ion-slides>
-				<ion-slide>
-					<ion-row>
-					<ion-col width-33>
-						<div class="libros recientes">
-							<img src='assets/imgs/libro.jpg' id="libro">
-						</div>
-					</ion-col>
-					<ion-col width-33>
-						<div class="libros recientes">
-							<img src='assets/imgs/libro.jpg' id="libro">	
-						</div>
-					</ion-col>
-					<ion-col width-33>
-						<div class="libros recientes">
-							<img src='assets/imgs/libro.jpg' id="libro">	
-						</div>
-					</ion-col>
-					</ion-row>
-				</ion-slide>
-				<ion-slide>			
-					<ion-row>
-					<ion-col width-33>
-						<div class="libros recientes">
-							<img src='assets/imgs/libro.jpg' id="libro">	
-						</div>
-					</ion-col>
-					<ion-col width-33>
-						<div class="libros recientes">
-							<img src='assets/imgs/libro.jpg' id="libro">	
-						</div>
-					</ion-col>
-					<ion-col width-33>
-						<div class="libros recientes">
-							<img src='assets/imgs/libro.jpg' id="libro">	
-						</div>
-					</ion-col>
-					</ion-row>
-				</ion-slide>
-				<ion-slide>
-					<ion-row>
-					<ion-col width-33>
-						<div class="libros recientes">
-							<img src='assets/imgs/libro.jpg' id="libro">	
-						</div>
-					</ion-col>
-					<ion-col width-33>
-						<div class="libros recientes">
-							<img src='assets/imgs/libro.jpg' id="libro">	
-						</div>
-					</ion-col>
-					<ion-col width-33>
-						<div class="libros recientes">
-							<img src='assets/imgs/libro.jpg' id="libro">	
-						</div>
-					</ion-col>
-					</ion-row>
-				</ion-slide>
-			</ion-slides>
-			</ion-row>
-	
-	
-	
-	
-
-
-	<h1>LISTADO DE LIBROS:</h1>
-
- <p *ngFor="let libro of listaLibros ">
-<button small ion-button >-</button>
-{{libro.titulo}} {{libro.autor}} <img [src]=libro.imagen>
- </p>
-
-
-
-  
-  
+	<h1>Libros recientes</h1>
+	<ion-row>
+		<ion-slides>
+			<ion-slide>
+				<ion-row>
+				<ion-col col-4 *ngFor="let libro of lib1 ">
+					<div (click)="goToLibro('LibroPage',libro)">
+						<img [src]=libro.imagen>
+						<div id="titulo">{{libro.titulo}}</div>
+					</div>
+				</ion-col>
+				</ion-row>
+			</ion-slide>
+			<ion-slide>
+				<ion-row>
+				<ion-col col-4 *ngFor="let libro of lib2 ">
+					<div (click)="openPage('LibroPage')">
+						<img [src]=libro.imagen>
+						<div id="titulo">{{libro.titulo}}</div>
+					</div>
+				</ion-col>
+				</ion-row>
+			</ion-slide>
+			<ion-slide>
+				<ion-row>
+				<ion-col col-4 *ngFor="let libro of lib3 ">
+					<div (click)="openPage('LibroPage')">
+						<img [src]=libro.imagen>
+						<div id="titulo">{{libro.titulo}}</div>
+					</div>
+				</ion-col>
+				</ion-row>
+			</ion-slide>
+		</ion-slides>
+	</ion-row>
+	<h1>Mejor valorados</h1>
+	<ion-row>
+		<ion-slides>
+			<ion-slide>
+				<ion-row>
+				<ion-col col-4 *ngFor="let libro of lib2 ">
+					<div (click)="openPage('LibroPage')">
+						<img [src]=libro.imagen>
+						<div id="titulo">{{libro.titulo}}</div>
+					</div>
+				</ion-col>
+				</ion-row>
+			</ion-slide>
+			<ion-slide>
+				<ion-row>
+				<ion-col col-4 *ngFor="let libro of lib3 ">
+					<div (click)="openPage('LibroPage')">
+						<img [src]=libro.imagen>
+						<div id="titulo">{{libro.titulo}}</div>
+					</div>
+				</ion-col>
+				</ion-row>
+			</ion-slide>
+			<ion-slide>
+				<ion-row>
+				<ion-col col-4 *ngFor="let libro of lib1 ">
+					<div (click)="openPage('LibroPage')">
+						<img [src]=libro.imagen>
+						<div id="titulo">{{libro.titulo}}</div>
+					</div>
+				</ion-col>
+				</ion-row>
+			</ion-slide>
+		</ion-slides>
+	</ion-row>
 </ion-content>
 
 <ion-footer>
 <div class="tab">
   <button class="tablinks" (click)="openPage('EsperaPage')"><ion-icon name="book"></ion-icon></button>
-  <button class="tablinks" ><ion-icon name="home"></ion-icon></button>
+  <button class="tablinks" (click)="irHome()"><ion-icon name="home"></ion-icon></button>
   <button class="tablinks" (click)="openPage('PerfilPage')"><ion-icon name="person"></ion-icon></button>
 </div>
 </ion-footer>

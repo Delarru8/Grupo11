@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import {SiersProvider} from '../../providers/siers/siers';
+import {Libro} from '../../models/libro.model';
 /**
  * Generated class for the LibroPage page.
  *
@@ -15,7 +17,11 @@ import { HomePage } from '../home/home';
 })
 export class LibroPage {
 
+	public lib: Libro;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+	  this.lib = navParams.get("libroDado");
+	  alert(this.lib);
   }
 
   ionViewDidLoad() {
