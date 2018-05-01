@@ -27,6 +27,24 @@ public listaUsuarios:any[];
 
 
 public constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public viewCtrl : ViewController,public dbFirebase:SiersProvider) {
+		let alert1 = this.alertCtrl.create({
+		title: 'Usuario predeterminado 2',
+		subTitle: 'Nombre: Juan, Contraseña: 123',
+		buttons: ['OK']
+		});
+		alert1.present();
+		let alert2 = this.alertCtrl.create({
+		title: 'Usuario predeterminado 1',
+		subTitle: 'Nombre: Jose, Contraseña: 789',
+		buttons: ['OK']
+		});
+		alert2.present();
+		let alert3 = this.alertCtrl.create({
+		title: 'Bibliotecario predeterminado',
+		subTitle: 'Nombre: Yolanda, Contraseña: 456',
+		buttons: ['OK']
+		});
+		alert3.present();
   }
 
 	ionViewDidEnter()
