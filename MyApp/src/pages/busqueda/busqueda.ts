@@ -24,6 +24,7 @@ export class BusquedaPage {
 	buscado : string;
 	public newuser: any;
 	public param: any;
+	public unUser: any;
 	public unLibro: any;
 	
   constructor(public navCtrl: NavController, public navParams: NavParams,public dbFirebase:SiersProvider) {

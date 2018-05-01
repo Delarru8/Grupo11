@@ -23,7 +23,10 @@ export class LibroPage {
 	public newuser:any;
 	public dis:boolean = false;
 	public bibliovalue: String;
-	public fecha: Date;
+	public unLibro: any;
+	public unUser: any;
+	public param: any;
+	public fecha: any = "";
 	
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public dbFirebase:SiersProvider) {
 	  this.lib = navParams.get("unLibro");
@@ -61,7 +64,7 @@ export class LibroPage {
   }
   
   showAlert() {
-	  if(this.dis = false){
+	  if(this.dis == false){
 			this.param = {
 				unUser: this.newuser
 			};
