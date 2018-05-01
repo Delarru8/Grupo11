@@ -66,7 +66,7 @@ export class BusquedaPage {
 			this.libros = _libros.filter((libro) => {
 				return (libro.toLowerCase().indexOf(this.buscado.toLowerCase()) > -1);
 			});
-			var par: number[] = new Array(this.libros.length);
+			var par: any[] = new Array(this.libros.length);
 			for(var j in this.libros){
 				for(var k in _libros){
 					if(this.libros[j] == _libros[k]){
