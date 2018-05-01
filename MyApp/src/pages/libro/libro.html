@@ -1,110 +1,27 @@
+<!--
+  Generated template for the LibroPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
     <ion-navbar>
 	    <ion-buttons start width-10>
 		<img src='assets/imgs/logo.png' id="logo">
         </ion-buttons>
 
-        <ion-searchbar id="search" placeholder="Busca un libro" (ionInput)="getItems($event)"></ion-searchbar> 
+        <ion-searchbar id="search" placeholder="Busca un libro" (click)="openPage('BusquedaPage')"></ion-searchbar>
         <ion-buttons end>
-            <button id="conf" ion-button icon-only (click)="irHome()">
-                <ion-icon name="home"></ion-icon>
+            <button id="conf" ion-button icon-only>
+                <ion-icon name="settings"></ion-icon>
             </button>
         </ion-buttons>
     </ion-navbar>
 </ion-header>
 
+
 <ion-content padding>
 
-	<ion-row>
-        <ion-col col-6>
-        <h4>Harry Potter y el legado maldito </h4>
-        </ion-col>
-    </ion-row>
-
-		<hr>
-	<ion-row>
-		<ion-col col-5>
-			<div class="libroB">
-				<img src='assets/imgs/libro.jpg' (click)="openPage('LibroPage')" class="libro1">	
-			</div>
-		</ion-col>
-		<ion-col col-7>
-			<div class="titulo">
-				Titulo:
-			</div>
-			<div class="datos">
-				Harry Potter y el legado maldito
-			</div>
-			<div class="titulo">
-				Autor:
-			</div>
-			<div class="datos">
-				Jack Thorne, J. K. Rowling & John Tiffany
-			</div>
-			<div class="titulo">
-				Sinopsis:
-			</div>
-			<div class="datos">
-				Ser Harry Potter nunca ha sido tarea facil, menos aun desde que se ha convertido en un atareadisimo empleado del Ministerio de Magia, un hombre casado y padre de tres hijos.
-				<a href="https://es.wikipedia.org/wiki/Harry_Potter_y_el_legado_maldito">...</a>
-			</div>
-		</ion-col>
-	</ion-row>
-	
-	<ion-row>
-        <ion-col col-6>
-			<h6 class="titulo">Biblioteca </h6>
-        </ion-col>
-		
-		<ion-col col-6>
-			<div *ngIf="disponible()">
-				<div class="disp">
-					Disponible
-				</div>
-			</div>
-			 <div *ngIf="!disponible()">
-				<div class="nodisp">
-					No Disponible
-				</div>
-			</div>
-		</ion-col>
-    </ion-row>
-	
-	<ion-row>
-		<ion-col col-60 >
-		<select id="bibliovalue">
-			<option value="leg" (click)="disponible()">Biblioteca Municipal de Leganes</option>
-			<option value="gl" (click)="disponible()">Biblioteca Garcia Lorca</option>
-			<option value="get" (click)="disponible()">Biblioteca Municipal de Getafe</option>
-			<option value="mad" (click)="disponible()">Biblioteca de Madrid</option>
-			<option value="alc" (click)="disponible()">Biblioteca Municipal de Alcorcon</option>
-		</select>
-		</ion-col>
-	</ion-row>
-	
-	<ion-row>
-        <ion-col col-6 *ngIf="disponible()">
-			<h6 class="titulo">Fecha </h6>
-        </ion-col>
-	</ion-row>
-	
-	<ion-row>
-		<ion-col col-6 *ngIf="disponible()">
-			<input type="date" id="fecha">
-		</ion-col>
-	</ion-row>
-	
-	<ion-row>
-		<ion-col>
-			<div *ngIf="disponible()">
-				<button ion-button round color="secondary" class="boton" (click)="showAlert()" >Reservar</button>
-			</div>
-			
-			<div *ngIf="!disponible()">
-				<button ion-button round color="light" class="boton" (click)="showAlert()" >Ponerte a la cola</button>
-			</div>
-		</ion-col>
-	</ion-row>
 </ion-content>
 
 <ion-footer>
