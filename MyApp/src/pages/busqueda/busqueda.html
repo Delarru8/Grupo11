@@ -12,7 +12,7 @@
 				<img src='assets/imgs/logo.png' id="logo">
 			</ion-col>
 			<ion-col col-8>
-				<ion-searchbar id="search" [(ngModel)]="buscado" placeholder="Busca un libro" (ionClear)="vaciar()" (ionInput)="buscar()"></ion-searchbar> 
+				<ion-searchbar  id="search" placeholder="Busca un libro" (click)="openPage('BusquedaPage')"></ion-searchbar>
 			</ion-col>
 			<ion-col col-2>
 				<button style="width: 40px; height: 30px" color="danger" outline id="log-out" (click)="cerrarSesion()" ion-button icon-only>
