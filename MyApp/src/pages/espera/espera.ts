@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import {SiersProvider} from '../../providers/siers/siers';
 import { AlertController } from 'ionic-angular';
+import { ModalPage } from '../modal/modal';
 
 /**
  * Generated class for the EsperaPage page.
@@ -37,6 +38,26 @@ export class EsperaPage {
 	  title: 'Zona Restringida',
 	  subTitle: 'Lo sentimos, pero esta funcionalidad de la aplicación no se encuentra disponible en esta versión.',
 	  buttons: ['OK']
+	  });
+	  alert.present();
+  }
+  
+  cerrarSesion(){
+	  let alert = this.alertCtrl.create({
+	  title: 'Cerrar sesión',
+	  subTitle: 'Usted va a cerrar su sesión actual. ¿Continuar?',
+	  buttons: [
+      {
+        text: 'Cancelar',
+        role: 'cancelar',
+      },
+      {
+        text: 'OK',
+        handler: () => {
+          	this.navCtrl.setRoot(ModalPage);
+        }
+      }
+    ]
 	  });
 	  alert.present();
   }

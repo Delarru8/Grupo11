@@ -4,6 +4,7 @@ import { HomePage } from '../home/home';
 import {SiersProvider} from '../../providers/siers/siers';
 import {Pedido} from '../../models/pedido.model';
 import { AlertController } from 'ionic-angular';
+import { ModalPage } from '../modal/modal';
 /**
  * Generated class for the LibroPage page.
  *
@@ -49,6 +50,26 @@ export class LibroPage {
 			unUser: this.newuser
 	};
 	this.navCtrl.push(pagina,this.param);
+  }
+  
+  cerrarSesion(){
+	  let alert = this.alertCtrl.create({
+	  title: 'Cerrar sesión',
+	  subTitle: 'Usted va a cerrar su sesión actual. ¿Continuar?',
+	  buttons: [
+      {
+        text: 'Cancelar',
+        role: 'cancelar',
+      },
+      {
+        text: 'OK',
+        handler: () => {
+          	this.navCtrl.setRoot(ModalPage);
+        }
+      }
+    ]
+	  });
+	  alert.present();
   }
   
   openListas(){

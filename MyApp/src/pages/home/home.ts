@@ -6,6 +6,7 @@ import { Slides } from 'ionic-angular';
 import {SiersProvider} from '../../providers/siers/siers';
 import {Libro} from '../../models/libro.model';
 import { AlertController } from 'ionic-angular';
+import { ModalPage } from '../modal/modal';
 
 
 
@@ -76,7 +77,25 @@ export class HomePage {
 	  });
 	  alert.present();
   }
-  
+  cerrarSesion(){
+	  let alert = this.alertCtrl.create({
+	  title: 'Cerrar sesión',
+	  subTitle: 'Usted va a cerrar su sesión actual. ¿Continuar?',
+	  buttons: [
+      {
+        text: 'Cancelar',
+        role: 'cancelar',
+      },
+      {
+        text: 'OK',
+        handler: () => {
+          	this.navCtrl.setRoot(ModalPage);
+        }
+      }
+    ]
+	  });
+	  alert.present();
+  }
   openPage(pagina){
 	this.param = {
 			unUser: this.newuser

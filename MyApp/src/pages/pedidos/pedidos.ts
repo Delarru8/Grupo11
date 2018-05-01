@@ -4,6 +4,7 @@ import { HomePage } from '../home/home';
 import {SiersProvider} from '../../providers/siers/siers';
 import {Pedido} from '../../models/pedido.model';
 import { AlertController } from 'ionic-angular';
+import { ModalPage } from '../modal/modal';
 
 /**
  * Generated class for the PedidosPage page.
@@ -70,6 +71,26 @@ export class PedidosPage {
 	  title: 'Zona Restringida',
 	  subTitle: 'Lo sentimos, pero esta funcionalidad de la aplicación no se encuentra disponible en esta versión.',
 	  buttons: ['OK']
+	  });
+	  alert.present();
+  }
+  
+  cerrarSesion(){
+	  let alert = this.alertCtrl.create({
+	  title: 'Cerrar sesión',
+	  subTitle: 'Usted va a cerrar su sesión actual. ¿Continuar?',
+	  buttons: [
+      {
+        text: 'Cancelar',
+        role: 'cancelar',
+      },
+      {
+        text: 'OK',
+        handler: () => {
+          	this.navCtrl.setRoot(ModalPage);
+        }
+      }
+    ]
 	  });
 	  alert.present();
   }
