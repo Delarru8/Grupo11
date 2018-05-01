@@ -74,12 +74,25 @@ export class PedidosPage {
 	  alert.present();
   }
   
-  openPage(pagina)
-  {
+  openPage(pagina){
 	this.param = {
-		unUser: this.newuser
+			unUser: this.newuser
 	};
 	this.navCtrl.push(pagina,this.param);
+  }
+  
+  openListas(){
+	  if(this.newuser.tipo=="bl"){
+			this.param = {
+				unUser: this.newuser
+			};
+			this.navCtrl.push("PedidosPage",this.param);
+		}else{
+			this.param = {
+				unUser: this.newuser
+			};
+			this.navCtrl.push("EsperaPage",this.param);
+	  }
   }
   
   irHome()

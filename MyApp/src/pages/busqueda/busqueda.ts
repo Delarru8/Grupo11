@@ -46,26 +46,24 @@ export class BusquedaPage {
   }
   
   openPage(pagina){
-	if(pagina!="PedidosPage"){
-		this.param = {
+	this.param = {
 			unUser: this.newuser
-		};
-		this.navCtrl.push(pagina,this.param);
-	}else{
-		if(this.newuser.tipo=="bl"){
+	};
+	this.navCtrl.push(pagina,this.param);
+  }
+  
+  openListas(){
+	  if(this.newuser.tipo=="bl"){
 			this.param = {
 				unUser: this.newuser
 			};
-			this.navCtrl.push(pagina,this.param);
+			this.navCtrl.push("PedidosPage",this.param);
 		}else{
-			let alert = this.alertCtrl.create({
-			title: 'Zona Restringida',
-			subTitle: 'Lo sentimos, pero esta funcionalidad de la aplicación sólo se encuentra disponible para los bibliotecarios.',
-			buttons: ['OK']
-			});
-			alert.present();
-		}
-	}
+			this.param = {
+				unUser: this.newuser
+			};
+			this.navCtrl.push("EsperaPage",this.param);
+	  }
   }
   
   
