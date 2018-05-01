@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import {SiersProvider} from '../../providers/siers/siers';
-import {Libro} from '../../models/libro.model';
-import {Usuario} from '../../models/usuario.model';
 import {Pedido} from '../../models/pedido.model';
 import { AlertController } from 'ionic-angular';
 /**
@@ -37,6 +35,15 @@ export class LibroPage {
     console.log('ionViewDidLoad LibroPage');
   }
 
+  perfil(){
+	  let alert = this.alertCtrl.create({
+	  title: 'Zona Restringida',
+	  subTitle: 'Lo sentimos, pero esta funcionalidad de la aplicación no se encuentra disponible en esta versión.',
+	  buttons: ['OK']
+	  });
+	  alert.present();
+  }
+  
   openPage(pagina){
 	if(pagina!="PedidosPage"){
 		this.param = {

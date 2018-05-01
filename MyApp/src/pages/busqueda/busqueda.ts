@@ -36,6 +36,15 @@ export class BusquedaPage {
     console.log('ionViewDidLoad BusquedaPage');
   }
 
+  perfil(){
+	  let alert = this.alertCtrl.create({
+	  title: 'Zona Restringida',
+	  subTitle: 'Lo sentimos, pero esta funcionalidad de la aplicación no se encuentra disponible en esta versión.',
+	  buttons: ['OK']
+	  });
+	  alert.present();
+  }
+  
   openPage(pagina){
 	if(pagina!="PedidosPage"){
 		this.param = {

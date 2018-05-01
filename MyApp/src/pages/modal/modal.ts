@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ViewController } from 'ionic-angular';
 import {SiersProvider} from '../../providers/siers/siers';
-import {Usuario} from '../../models/usuario.model';
 import { AlertController } from 'ionic-angular';
 
 /**
