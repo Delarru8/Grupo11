@@ -18,7 +18,7 @@ import {Usuario} from '../../models/usuario.model';
 })
 export class ModalPage {
 public listaUsuarios:any[];
-	name : string;
+	user : string;
 	pass : string;
 	public newuser:any;
 
@@ -36,13 +36,12 @@ public constructor(public navCtrl: NavController, public navParams: NavParams, p
             for(var i in this.listaUsuarios){
 				if(this.listaUsuarios[i].nombre==this.user && this.listaUsuarios[i].contraseña==this.pass){
                 this.newuser=this.listaUsuarios[i];
-				alert("hey");
             }
 				
         }
 	  
 	  if(this.newuser!=""){
-	   this.viewCtrl.dismiss();
+	   this.viewCtrl.dismiss(this.newuser);
 	  }else{
 		 alert("Usuario incorecto");
 	  }
