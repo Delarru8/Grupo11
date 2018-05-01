@@ -30,7 +30,7 @@
 			<ion-slide>
 				<ion-row>
 				<ion-col col-4 *ngFor="let libro of lib1 ">
-					<div (click)="goToLibro('LibroPage',libro)">
+					<div (click)="goToLibro(libro)">
 						<img [src]=libro.imagen>
 						<div id="titulo">{{libro.titulo}}</div>
 					</div>
@@ -40,7 +40,7 @@
 			<ion-slide>
 				<ion-row>
 				<ion-col col-4 *ngFor="let libro of lib2 ">
-					<div (click)="openPage('LibroPage')">
+					<div (click)="goToLibro(libro)">
 						<img [src]=libro.imagen>
 						<div id="titulo">{{libro.titulo}}</div>
 					</div>
@@ -50,7 +50,7 @@
 			<ion-slide>
 				<ion-row>
 				<ion-col col-4 *ngFor="let libro of lib3 ">
-					<div (click)="openPage('LibroPage')">
+					<div (click)="goToLibro(libro)">
 						<img [src]=libro.imagen>
 						<div id="titulo">{{libro.titulo}}</div>
 					</div>
@@ -65,7 +65,7 @@
 			<ion-slide>
 				<ion-row>
 				<ion-col col-4 *ngFor="let libro of lib2 ">
-					<div (click)="openPage('LibroPage')">
+					<div (click)="goToLibro(libro)">
 						<img [src]=libro.imagen>
 						<div id="titulo">{{libro.titulo}}</div>
 					</div>
@@ -75,7 +75,7 @@
 			<ion-slide>
 				<ion-row>
 				<ion-col col-4 *ngFor="let libro of lib3 ">
-					<div (click)="openPage('LibroPage')">
+					<div (click)="goToLibro(libro)">
 						<img [src]=libro.imagen>
 						<div id="titulo">{{libro.titulo}}</div>
 					</div>
@@ -85,7 +85,7 @@
 			<ion-slide>
 				<ion-row>
 				<ion-col col-4 *ngFor="let libro of lib1 ">
-					<div (click)="openPage('LibroPage')">
+					<div (click)="goToLibro(libro)">
 						<img [src]=libro.imagen>
 						<div id="titulo">{{libro.titulo}}</div>
 					</div>

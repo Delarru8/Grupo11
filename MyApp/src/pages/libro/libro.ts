@@ -17,8 +17,11 @@ import { AlertController } from 'ionic-angular';
   templateUrl: 'libro.html',
 })
 export class LibroPage {
-
+	public lib:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+	  this.lib = navParams.get("unLibro");
+	  //se coge con lib.algo
+	  alert(this.lib.titulo);
   }
 
   ionViewDidLoad() {
@@ -36,6 +39,7 @@ export class LibroPage {
   }
   
   disponible(){
+	   /*
 	  var biblio = document.getElementById("bibliovalue");
 	  var biblioteca = bibliovalue.options[bibliovalue.selectedIndex].value;
 	  if(biblioteca == "leg" || biblioteca == "gl" || biblioteca == "alc")
@@ -44,10 +48,11 @@ export class LibroPage {
 	  {let disponible = true;}
   
 	  return disponible;
+	  */
   }
   
   showAlert() {
-	 
+	    /*
 	  var biblio = document.getElementById("bibliovalue");
 	  var biblioteca = bibliovalue.options[bibliovalue.selectedIndex].value;
 	  
@@ -85,8 +90,7 @@ export class LibroPage {
 			alert.present();
 		}
 	  }
-	   
-    
+	   */
   }
 
 }

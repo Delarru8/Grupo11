@@ -26,7 +26,8 @@ export class HomePage {
 	public lib1: Libro[];
 	public lib2: Libro[];
 	public lib3: Libro[];
-	public libroDado: Libro;
+	public param: any;
+	public unLibro: any;
 		
 	constructor(public navCtrl: NavController, public navParams: NavParams,public dbFirebase:SiersProvider) {
 		this.dbFirebase.getLibros().subscribe(listaLibros=>{this.listaLibros=listaLibros;
@@ -66,9 +67,11 @@ export class HomePage {
 	  this.navCtrl.push(pagina);
   }
   
-  goToLibro(pagina,libro:Libro) {
-	  this.libroDado = libro;
-	  this.navCtrl.push(pagina,this.libroDado);
+  goToLibro(libroDado) {
+	this.param = {
+		unLibro: libroDado
+	};
+	this.navCtrl.push('LibroPage',this.param);
   }
   
   irHome(){
