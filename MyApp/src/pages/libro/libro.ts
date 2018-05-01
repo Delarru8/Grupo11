@@ -17,11 +17,12 @@ import {Libro} from '../../models/libro.model';
 })
 export class LibroPage {
 
-	public lib: Libro;
+	public lib: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-	  this.lib = navParams.get("libroDado");
-	  alert(this.lib);
+	  this.lib = navParams.get("unLibro");
+	  //se coge con lib.algo
+	  alert(this.lib.titulo);
   }
 
   ionViewDidLoad() {

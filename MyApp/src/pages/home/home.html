@@ -30,7 +30,7 @@
 			<ion-slide>
 				<ion-row>
 				<ion-col col-4 *ngFor="let libro of lib1 ">
-					<div (click)="goToLibro('LibroPage',libro)">
+					<div (click)="goToLibro(libro)">
 						<img [src]=libro.imagen>
 						<div id="titulo">{{libro.titulo}}</div>
 					</div>
