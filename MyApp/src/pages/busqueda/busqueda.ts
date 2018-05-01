@@ -22,6 +22,7 @@ export class BusquedaPage {
 	
 	public libros:String[];
 	public vacio:String[];
+	public par:any;
 	buscado : string;
 	
   constructor(public navCtrl: NavController, public navParams: NavParams,public dbFirebase:SiersProvider) {
@@ -58,6 +59,7 @@ export class BusquedaPage {
 	}
 	
 	buscar() {
+<<<<<<< HEAD
 		var _libros: String[] = new Array(this.listaLibros.length);
 		for(var libro in this.listaLibros){
 			_libros[libro] = this.listaLibros[libro].titulo;
@@ -84,5 +86,33 @@ export class BusquedaPage {
 			this.librosParecidos = this.vacio2;
 		}
 	}
+=======
+        var _libros: String[] = new Array(this.listaLibros.length);
+        for(var libro in this.listaLibros){
+            _libros[libro] = this.listaLibros[libro].titulo;
+        }
+        if (this.buscado != '') {
+            this.libros = _libros.filter((libro) => {
+                return (libro.toLowerCase().indexOf(this.buscado.toLowerCase()) > -1);
+            });
+            this.par = new Array(this.libros.length);
+            for(var j in this.libros){
+                for(var k in _libros){
+                    if(this.libros[j] == _libros[k]){
+                        this.par[j] = k;
+                    }
+                }
+            }
+            this.librosParecidos = new Array(this.libros.length);
+            for(var i in this.libros){
+                this.librosParecidos[i] = this.listaLibros[this.par[i]];
+            }
+        }
+        else{
+            this.libros = this.vacio;
+            this.librosParecidos = this.vacio2;
+        }
+    }
+>>>>>>> da7ead5695bde24c1bc30a8681f80c0dc428bef3
   
 }
