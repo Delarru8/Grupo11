@@ -26,7 +26,7 @@ export class PedidosPage {
 	public unUser: any;
 	public param: any;
 	
-  constructor(public navCtrl: NavController, public navParams: NavParams,public dbFirebase:SiersProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public dbFirebase:SiersProvider) {
 	  this.dbFirebase.getPedidos().subscribe(listaPedidos=>{this.listaPedidos=listaPedidos});
 	  this.newuser = navParams.get("unUser");
   }
@@ -35,8 +35,36 @@ export class PedidosPage {
     console.log('ionViewDidLoad PedidosPage');
   }
 
-  prep(){
+  prep(pedido:Pedido){
+	  if(pedido.preparado == "no"){
+		  return false;
+	  }
 	  return true;
+  }
+  
+  preparado(pedido:Pedido){
+	  let datoslibro5:Pedido=new Pedido();
+	  datoslibro5.titulo=pedido.titulo;
+	  datoslibro5.nombre=pedido.nombre;
+	  datoslibro5.dni=pedido.dni;
+	  datoslibro5.fecha=pedido.fecha;
+	  datoslibro5.imagen=pedido.imagen;
+	  datoslibro5.preparado="si";
+	  this.dbFirebase.delPedido(pedido.titulo);
+	  this.dbFirebase.guardarPedido(datoslibro5);
+  }
+  
+  recogido(pedido:Pedido){
+	  if(pedido.preparado=="si"){
+		  this.dbFirebase.delPedido(pedido.titulo);
+	  }else{
+		  let alert = this.alertCtrl.create({
+		  title: 'Error',
+		  subTitle: 'No se puede recoger un libro que no haya sido preparado con anterioridad.',
+		  buttons: ['OK']
+		  });
+		  alert.present();
+	  }
   }
   
   openPage(pagina)

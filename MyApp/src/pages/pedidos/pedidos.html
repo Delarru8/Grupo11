@@ -41,7 +41,8 @@
 		<ion-col col-4>
 			<div>
 				<ion-buttons>
-					<button ion-button small color="dark" (click)="preparado(libro)" *ngIf="prep()" outline>Preparado</button>
+					<button ion-button small color="dark" (click)="preparado(libro)" *ngIf="!prep(libro)" outline>Preparado</button>
+					<b *ngIf="prep(libro)"> ¡Preparado! </b>
 					<button ion-button small color="dark" (click)="recogido(libro)" outline>Recogido</button>
 				</ion-buttons>
 			</div>
