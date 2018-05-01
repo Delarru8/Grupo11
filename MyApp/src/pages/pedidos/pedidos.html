@@ -26,7 +26,34 @@
 
 
 <ion-content padding>
-
+<h3>Pedidos</h3>
+<hr>
+	<div *ngFor="let libro of listaLibros ">
+	<ion-row>
+		<ion-col col-2>
+			<div>
+				<img [src]=libro.imagen>
+			</div>
+		</ion-col>
+		<ion-col col-7>
+			<div>
+				<b>Libro: </b>{{libro.titulo}}<br>
+				<b>Fecha: </b>03/05/18<br>
+				<b>Hora: </b>16:56 <br>
+				<b>DNI: </b>12345678P<br>
+			</div>
+		</ion-col>
+		<ion-col col-3>
+			<div>
+				<ion-buttons>
+					<button ion-button small color="dark" outline>Preparado</button>
+					<button ion-button small color="dark" outline>Recogido</button>
+				</ion-buttons>
+			</div>
+		</ion-col>
+	</ion-row>
+	<hr>
+	</div>
 </ion-content>
 
 <ion-footer>
