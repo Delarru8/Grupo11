@@ -5,7 +5,6 @@ import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 import {SiersProvider} from '../../providers/siers/siers';
 import {Libro} from '../../models/libro.model';
-import { ModalController } from 'ionic-angular';
 
 
 
@@ -32,7 +31,7 @@ export class HomePage {
 	public unUser: any;
 	public newuser: any;
 		
-	constructor(public navCtrl: NavController, public navParams: NavParams,public dbFirebase:SiersProvider,public modal: ModalController) {
+	constructor(public navCtrl: NavController, public navParams: NavParams,public dbFirebase:SiersProvider) {
 		this.dbFirebase.getLibros().subscribe(listaLibros=>{this.listaLibros=listaLibros;
 		this.lib1 = new Array(3);
 		this.lib2 = new Array(3);
@@ -55,14 +54,7 @@ export class HomePage {
 	}
 	
 	@ViewChild(Slides) slides: Slides;
-
-	openModal(){
-	var modalPage = this.modal.create('ModalPage'); modalPage.onDidDismiss((newuser) => {
-      this.newuser=newuser;
-	  alert(this.newuser.nombre);
-    });
-	modalPage.present();
-   }    
+ 
 	
   goToSlide() {
     this.slides.slideTo(2, 500);

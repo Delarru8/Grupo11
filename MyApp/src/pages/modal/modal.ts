@@ -1,8 +1,10 @@
+import { HomePage } from '../home/home';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ViewController } from 'ionic-angular';
 import {SiersProvider} from '../../providers/siers/siers';
 import {Usuario} from '../../models/usuario.model';
+import { AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the ModalPage page.
@@ -21,9 +23,11 @@ public listaUsuarios:any[];
 	user : string;
 	pass : string;
 	public newuser:any;
+	public param: any;
+	public unUser: any;
 
 
-public constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl : ViewController,public dbFirebase:SiersProvider) {
+public constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public viewCtrl : ViewController,public dbFirebase:SiersProvider) {
   }
 
 	ionViewDidEnter()
@@ -31,7 +35,7 @@ public constructor(public navCtrl: NavController, public navParams: NavParams, p
 		this.dbFirebase.getUsuario().subscribe(listaUsuarios=>{this.listaUsuarios=listaUsuarios;});
 	}
 
-  closeModal(){
+  irHome(){
 	  this.newuser="";
             for(var i in this.listaUsuarios){
 				if(this.listaUsuarios[i].nombre==this.user && this.listaUsuarios[i].contraseña==this.pass){
@@ -39,11 +43,20 @@ public constructor(public navCtrl: NavController, public navParams: NavParams, p
             }
 				
         }
-	  
-	  if(this.newuser!=""){
-	   this.viewCtrl.dismiss(this.newuser);
+	 if(this.newuser!=""){
+	   this.param = {
+		unUser: this.newuser
+		};
+	  this.navCtrl.setRoot(HomePage,this.param);
 	  }else{
-		 alert("Usuario incorecto");
+		  this.user="";
+		  this.pass="";
+		 let alert = this.alertCtrl.create({
+			title: 'Usuario incorrecto',
+			subTitle: 'Vuelva a introducir usuario y contraseña',
+			buttons: ['OK']
+			});
+			alert.present();
 	  }
   }
   

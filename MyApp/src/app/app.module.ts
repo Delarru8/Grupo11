@@ -9,6 +9,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { ModalPage } from '../pages/modal/modal';
 import { SiersProvider } from '../providers/siers/siers';
 
 export const fireBaseConfig={
@@ -23,6 +24,7 @@ export const fireBaseConfig={
 @NgModule({
   declarations: [
     MyApp,
+	ModalPage,
     HomePage
   ],
   imports: [
@@ -34,6 +36,7 @@ export const fireBaseConfig={
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+	ModalPage,
     HomePage
   ],
   providers: [
