@@ -23,18 +23,10 @@ import {Libro} from '../../models/libro.model';
 export class HomePage {
 	
 	public listaLibros:any[];
-<<<<<<< HEAD
 	public lib1: Libro[];
 	public lib2: Libro[];
 	public lib3: Libro[];
 	public libroDado: Libro;
-=======
-	public lib1: any[];
-	public lib2: any[];
-	public lib3: any[];
-	public param: any;
-	public unLibro: any;
->>>>>>> d67b3d35bf039abdf59f9932a79ecad43fee82f1
 		
 	constructor(public navCtrl: NavController, public navParams: NavParams,public dbFirebase:SiersProvider) {
 		this.dbFirebase.getLibros().subscribe(listaLibros=>{this.listaLibros=listaLibros;
@@ -74,12 +66,9 @@ export class HomePage {
 	  this.navCtrl.push(pagina);
   }
   
-  goToLibro(libroDado) {
-	this.param = {
-		unLibro: libroDado
-	};
-
-	  this.navCtrl.push('LibroPage',this.param);
+  goToLibro(pagina,libro:Libro) {
+	  this.libroDado = libro;
+	  this.navCtrl.push(pagina,this.libroDado);
   }
   
   irHome(){
