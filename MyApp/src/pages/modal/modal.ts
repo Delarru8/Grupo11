@@ -27,6 +27,11 @@ public listaUsuarios:any[];
 
 
 public constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public viewCtrl : ViewController,public dbFirebase:SiersProvider) {
+		
+  }
+
+	openAlerts(){
+	  
 		let alert1 = this.alertCtrl.create({
 		title: 'Usuario predeterminado 2',
 		subTitle: 'Nombre: Juan, Contraseña: 123',
@@ -45,8 +50,10 @@ public constructor(public navCtrl: NavController, public navParams: NavParams, p
 		buttons: ['OK']
 		});
 		alert3.present();
-  }
-
+	  
+	}
+  
+  
 	ionViewDidEnter()
 	{
 		this.dbFirebase.getUsuario().subscribe(listaUsuarios=>{this.listaUsuarios=listaUsuarios;});
